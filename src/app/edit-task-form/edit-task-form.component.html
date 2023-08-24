@@ -1,0 +1,24 @@
+<form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" id="title" formControlName="title" class="form-control">
+        <div *ngIf="editForm.get('title')?.hasError('required')" class="error-message">Title is required</div>
+    </div>
+
+    <div class="form-group">
+        <label for="desc">Description</label>
+        <textarea id="desc" formControlName="desc" class="form-control"></textarea>
+        <div *ngIf="editForm.get('desc')?.hasError('required')" class="error-message">Description is required</div>
+    </div>
+
+    <div class="form-group">
+        <label for="status">Status</label>
+        <select id="status" formControlName="status" class="form-control">
+            <option value="PENDIENTE">Pendiente</option>
+            <option value="COMPLETO">Completo</option>
+        </select>
+        <div *ngIf="editForm.get('status')?.hasError('required')" class="error-message">Status is required</div>
+    </div>
+
+    <button type="submit" [disabled]="editForm.invalid" class="btn btn-primary">Save</button>
+</form>
