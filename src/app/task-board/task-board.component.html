@@ -1,19 +1,23 @@
-<div class="task-board">
-    <div class="task-column" cdkDropList [cdkDropListData]="tasks" id="PENDIENTE"
+<div class="button-board"><button mat-raised-button color="primary" (click)="newEditTask({})">Nueva
+        Tarea</button>
+</div>
+<div class="task-board" cdkDropListGroup>
+    <div class="task-column" cdkDropList [cdkDropListData]="pendingTasks" id="PENDIENTE"
         (cdkDropListDropped)="onTaskDrop($event)">
-        <h2>Pending</h2>
+        <h2>Pendiente</h2>
         <div class="task-card-container">
-            <app-task-card *ngFor="let task of tasks | filterStatus:'PENDIENTE'" [task]="task" (edit)="editTask(task)"
-                (delete)="deleteTask(task)" cdkDrag></app-task-card>
+            <app-task-card *ngFor="let task of pendingTasks " [task]="task" (edit)="newEditTask(task)"
+                (delete)="deleteTask(task)" cdkDrag [cdkDragData]="task"></app-task-card>
         </div>
     </div>
 
-    <div class="task-column" cdkDropList [cdkDropListData]="tasks" id="COMPLETO"
+    <div class="task-column" cdkDropList [cdkDropListData]="completedTasks" id="COMPLETO"
         (cdkDropListDropped)="onTaskDrop($event)">
-        <h2>Complete</h2>
+        <h2>Completo</h2>
         <div class="task-card-container">
-            <app-task-card *ngFor="let task of tasks | filterStatus:'COMPLETO'" [task]="task" (edit)="editTask(task)"
-                (delete)="deleteTask(task)" cdkDrag></app-task-card>
+            <app-task-card *ngFor="let task of completedTasks " [task]="task" (edit)="newEditTask(task)"
+                (delete)="deleteTask(task)" cdkDrag [cdkDragData]="task"></app-task-card>
         </div>
     </div>
+
 </div>

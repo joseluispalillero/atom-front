@@ -1,7 +1,7 @@
 <div class="task-card">
-    <h3>{{ task.title }}</h3>
-    <p>{{ task.desc }}</p>
-    <p>Status: {{ task.status }}</p>
-    <button (click)="edit.emit()">Edit</button>
-    <button (click)="delete.emit()">Delete</button>
+    <h2>{{ task.title }}</h2>
+    <pre>{{ task.desc }}</pre>
+    <h3>{{ task.status }}</h3>
+    <button mat-raised-button color="primary" (click)="edit.emit()">Editar</button>
+    <button mat-raised-button color="warn" (click)="delete.emit()">Borrar</button>
 </div>

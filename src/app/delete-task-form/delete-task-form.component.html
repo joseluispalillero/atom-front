@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>¿Desea borrar la tarea?</h1>
+<div mat-dialog-content>
+    <p>Titulo: <b>{{task.title}}</b></p>
+    <p>Descripción:</p>
+    <pre><b>{{task.desc}}</b></pre>
+    <p>Estatus: <b>{{task.status}}</b></p>
+</div>
+<div mat-dialog-actions>
+    <div class="actions">
+        <button mat-raised-button color="warn" (click)="onDelete()">Borrar</button>
+        <button mat-raised-button (click)="onCancel()">Cancelar </button>
+    </div>
+</div>

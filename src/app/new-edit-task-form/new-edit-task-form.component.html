@@ -1,0 +1,35 @@
+<h1 mat-dialog-title>
+    <div *ngIf="task.id">
+        Editar Tarea
+    </div>
+    <div *ngIf="!task.id">
+        Nueva Tarea
+    </div>
+</h1>
+<div mat-dialog-content>
+    <form [formGroup]="newEditForm" (ngSubmit)="onSubmit()">
+        <mat-form-field>
+            <input matInput placeholder="Title" formControlName="title">
+            <mat-error *ngIf="newEditForm.get('title')?.hasError('required')">Titulo es requirido</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <textarea matInput placeholder="Description" formControlName="desc"></textarea>
+            <mat-error *ngIf="newEditForm.get('desc')?.hasError('required')">Descripción es requirido</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Estatus</mat-label>
+            <mat-select formControlName="status">
+                <mat-option value="PENDIENTE">Pendiente</mat-option>
+                <mat-option value="COMPLETO">Completo</mat-option>
+            </mat-select>
+            <mat-error *ngIf="newEditForm.get('status')?.hasError('required')">Estatus es requerido</mat-error>
+        </mat-form-field>
+
+        <div class="actions">
+            <button mat-raised-button color="primary" type="submit" [disabled]="newEditForm.invalid">Guardar</button>
+            <button mat-raised-button (click)="onCancel()">Cancelar </button>
+        </div>
+    </form>
+</div>
